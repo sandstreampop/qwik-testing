@@ -1,0 +1,21 @@
+.pokemon-container {
+  display: flex;
+  align-items: center;
+  row-gap: 1rem;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.pokemon-card {
+  padding: 1rem;
+  border: 1px solid;
+  width: 33%;
+}
+
+.pokemon-card b {
+  display: block;
+}
+
+.pokemon-card img {
+  display: block;
+}
