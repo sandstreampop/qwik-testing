@@ -1,10 +1,4 @@
-import {
-  component$,
-  Slot,
-  useStore,
-  useStyles$,
-  useWatch$,
-} from "@builder.io/qwik";
+import { component$, Slot, useStyles$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
 import { PokemonData } from "~/routes/pokemons/[offset]";
 import styles from "./pokemon.css?inline";
@@ -33,19 +27,19 @@ export const Pokemon = component$<PokemonProps>((props) => {
 
 export const PokemonList = component$(
   (props: { pokemonData: PokemonData; filter: string }) => {
-    const store = useStore<{ filteredList: PokemonData }>({ filteredList: [] });
+    // const store = useStore<{ filteredList: PokemonData }>({ filteredList: [] });
 
-    useWatch$(({ track }) => {
-      const pokemonData = track(() => props.pokemonData);
-      const filter = track(() => props.filter);
-      store.filteredList = pokemonData.filter(({ name }) =>
-        name.includes(filter)
-      );
-    });
+    // useWatch$(({ track }) => {
+    //   const pokemonData = track(() => props.pokemonData);
+    //   const filter = track(() => props.filter);
+    //   store.filteredList = pokemonData.filter(({ name }) =>
+    //     name.includes(filter)
+    //   );
+    // });
 
     return (
       <PokemonContainer>
-        {store.filteredList.map((pokemon) => (
+        {props.pokemonData.map((pokemon) => (
           <Pokemon {...pokemon} />
         ))}
       </PokemonContainer>

@@ -1,4 +1,4 @@
-import { component$, Resource, useStore, useStyles$ } from "@builder.io/qwik";
+import { component$, Resource, useStyles$ } from "@builder.io/qwik";
 import {
   DocumentHead,
   Link,
@@ -18,7 +18,7 @@ export type PokemonData = {
 export default component$(() => {
   useStyles$(styles);
 
-  const store = useStore({ filter: "" });
+  // const store = useStore({ filter: "" });
 
   const pokemonData = useEndpoint<PokemonData>();
   return (
@@ -29,18 +29,18 @@ export default component$(() => {
       >
         Get random pokemons
       </Link>
-      <span>Filter:</span>
+      {/* <span>Filter:</span>
       <input
         class="filter-input"
         value={store.filter}
         onInput$={(event) =>
           (store.filter = (event.target as HTMLInputElement).value)
         }
-      ></input>
+      ></input> */}
       <Resource
         onPending={() => <div>Loading...</div>}
         onResolved={(pokemonData) => (
-          <PokemonList pokemonData={pokemonData} filter={store.filter} />
+          <PokemonList pokemonData={pokemonData} filter={""} />
         )}
         value={pokemonData}
       ></Resource>
